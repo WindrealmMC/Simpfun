@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简幻欢-Minecraft公益开服平台</title>
+    <link rel="icon" href="https://simpfun.cn/logo.png" type="image/png">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --color-primary: #3b82f6;
+            --color-secondary: #10b981;
+            --color-light: #f8fafc;
+            --color-dark: #1e293b;
+        }
+        
+        @utility fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        @utility slide-up { animation: slideUp 0.6s ease-out forwards; }
+        @utility card-float { animation: cardFloat 4s ease-in-out infinite; }
+        @utility rotate-logo { animation: rotateLogo 1s ease-in-out; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes cardFloat { 
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes rotateLogo { 
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .card-hover { @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:scale-105; }
+        .btn-primary { @apply bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-lg shadow-sm hover:shadow-primary/30 transition-all text-sm; }
+        .nav-link { @apply relative text-dark hover:text-primary transition-colors pb-1; }
+        .nav-link::after { 
+            content: '';
+            @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+        }
+        .nav-link:hover::after { @apply w-full; }
+    </style>
+</head>
+<body class="font-sans bg-light text-dark antialiased">
+    <!-- 导航栏 -->
+    <nav id="main-nav" class="fixed w-full top-0 z-50 py-3 bg-white/95 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" id="logo" class="flex items-center space-x-1">
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary bg-white shadow-sm">
+                    <img src="https://simpfun.cn/logo.png" alt="简幻欢logo" class="w-full h-full object-cover">
+                </div>
+                <span class="font-bold text-primary">简幻欢</span>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#intro" class="nav-link">平台介绍</a>
+                <a href="#server" class="nav-link">服务器配置</a>
+                <a href="#free" class="nav-link">免费机制</a>
+                <a href="#community" class="nav-link">玩家社区</a>
+            </div>
+            <button id="menu-btn" class="md:hidden text-dark focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white absolute w-full border-t px-4 py-3 shadow-md">
+            <a href="#intro" class="block py-2 text-dark hover:text-primary transition-colors">平台介绍</a>
+            <a href="#server" class="block py-2 text-dark hover:text-primary transition-colors">服务器配置</a>
+            <a href="#free" class="block py-2 text-dark hover:text-primary transition-colors">免费机制</a>
+            <a href="#community" class="block py-2 text-dark hover:text-primary transition-colors">玩家社区</a>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-24 pb-18 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 text-center fade-in">
+            <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold mb-6">
+                简幻欢-Minecraft<br>
+                <span class="text-primary">公益开服平台</span>
+            </h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                4核12G高性能服务器，1元认证+每日签到，免费开启Minecraft公益服
+            </p>
+            <a href="https://simpfun.cn/auth?type=register&code=298401074" target="_blank" class="btn-primary">
+                立即开启服务器 <i class="fas fa-gamepad ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 平台介绍 - 宣传核心卖点 -->
+    <section id="intro" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-12 fade-in">
+                <h2 class="text-2xl font-bold mb-4">为什么选择简幻欢？</h2>
+                <p class="text-gray-600">8年云计算经验，20万玩家的共同选择，真正公益的Minecraft开服平台</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 卖点卡片1 -->
+                <div class="bg-light rounded-xl p-6 card-hover slide-up card-float" style="animation-delay: 0s;">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-heart text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">真正公益免费</h3>
+                    <p class="text-gray-600 text-center text-sm">1元认证+每日签到，无任何隐藏收费，学生党也能长期使用</p>
+                </div>
+                
+                <!-- 卖点卡片2 -->
+                <div class="bg-light rounded-xl p-6 card-hover slide-up card-float" style="animation-delay: 0.2s;">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-shield-alt text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">数据安全保障</h3>
+                    <p class="text-gray-600 text-center text-sm">15分钟自动备份，Docker容器隔离，支持一键回档，数据更安全</p>
+                </div>
+                
+                <!-- 卖点卡片3 -->
+                <div class="bg-light rounded-xl p-6 card-hover slide-up card-float" style="animation-delay: 0.4s;">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-users text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-3">20万+玩家选择</h3>
+                    <p class="text-gray-600 text-center text-sm">8年运营经验，QQ群70000+玩家，技术支持响应迅速</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务器配置 -->
+    <section id="server" class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12 fade-in">
+                <h2 class="text-2xl font-bold mb-4">多配置高性能服务器</h2>
+                <p class="text-gray-600">多种配置满足不同规模服务器需求，从10人小服到50人大型服</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <!-- 基础配置 -->
+                <div class="bg-white rounded-xl p-4 card-hover slide-up" style="animation-delay: 0s;">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold">基础型</h3>
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">50-75积分/天</span>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-700">
+                        <li><i class="fas fa-microchip text-primary mr-1"></i> 4核CPU</li>
+                        <li><i class="fas fa-memory text-primary mr-1"></i> 8-12GB内存</li>
+                        <li><i class="fas fa-hdd text-primary mr-1"></i> 16GB SSD</li>
+                        <li><i class="fas fa-users text-primary mr-1"></i> 10-20人</li>
+                    </ul>
+                </div>
+                
+                <!-- 标准配置 -->
+                <div class="bg-white rounded-xl p-4 card-hover slide-up" style="animation-delay: 0.1s;">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold">标准型</h3>
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">85-145积分/天</span>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-700">
+                        <li><i class="fas fa-microchip text-primary mr-1"></i> 4-6核CPU</li>
+                        <li><i class="fas fa-memory text-primary mr-1"></i> 12-16GB内存</li>
+                        <li><i class="fas fa-hdd text-primary mr-1"></i> 16-30GB SSD</li>
+                        <li><i class="fas fa-users text-primary mr-1"></i> 20-30人</li>
+                    </ul>
+                </div>
+                
+                <!-- 高级配置 -->
+                <div class="bg-white rounded-xl p-4 card-hover slide-up" style="animation-delay: 0.2s;">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold">高级型</h3>
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">170-290积分/天</span>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-700">
+                        <li><i class="fas fa-microchip text-primary mr-1"></i> 4-8核CPU</li>
+                        <li><i class="fas fa-memory text-primary mr-1"></i> 16-28GB内存</li>
+                        <li><i class="fas fa-hdd text-primary mr-1"></i> 30-60GB SSD</li>
+                        <li><i class="fas fa-users text-primary mr-1"></i> 30-50人</li>
+                    </ul>
+                </div>
+                
+                <!-- 旗舰配置 -->
+                <div class="bg-white rounded-xl p-4 card-hover slide-up" style="animation-delay: 0.3s;">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold">旗舰型</h3>
+                        <span class="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs">340-880积分/天</span>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-700">
+                        <li><i class="fas fa-microchip text-primary mr-1"></i> 6-12核CPU</li>
+                        <li><i class="fas fa-memory text-primary mr-1"></i> 24-72GB内存</li>
+                        <li><i class="fas fa-hdd text-primary mr-1"></i> 40-100GB SSD</li>
+                        <li><i class="fas fa-users text-primary mr-1"></i> 50+人</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-white rounded-xl p-5 max-w-2xl mx-auto slide-up">
+                <h3 class="text-base font-bold mb-3 text-center">热门配置推荐</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="p-3 border border-gray-100 rounded">
+                        <div class="flex items-center text-xs mb-2">
+                            <i class="fas fa-check-circle text-secondary mr-1"></i>
+                            <span>新手首选</span>
+                        </div>
+                        <p class="text-[10px] text-gray-600">4核/8GB/16GB · 50积分/天 · 适合小型生存服</p>
+                    </div>
+                    <div class="p-3 border border-gray-100 rounded">
+                        <div class="flex items-center text-xs mb-2">
+                            <i class="fas fa-star text-accent mr-1"></i>
+                            <span>公益服推荐</span>
+                        </div>
+                        <p class="text-[10px] text-gray-600">6核/16GB/30GB · 140积分/天 · 支持30人在线</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12 fade-in">
+                <h2 class="text-2xl font-bold mb-4">公益开服三大核心优势</h2>
+                <p class="text-gray-600 text-sm">相比内网穿透和付费服务器的差异化优势</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="bg-light rounded-xl p-5 card-hover slide-up" style="animation-delay: 0s;">
+                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <i class="fas fa-bolt text-primary"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-center mb-2">低延迟高稳定</h3>
+                    <p class="text-gray-600 text-center text-[10px]">BGP专线直连，延迟<20ms，比内网穿透低60%</p>
+                </div>
+                
+                <div class="bg-light rounded-xl p-5 card-hover slide-up" style="animation-delay: 0.2s;">
+                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <i class="fas fa-calendar-check text-primary"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-center mb-2">1元认证+签到免费</h3>
+                    <p class="text-gray-600 text-center text-[10px]">无套路免费机制，每日签到领积分，长期使用0成本</p>
+                </div>
+                
+                <div class="bg-light rounded-xl p-5 card-hover slide-up" style="animation-delay: 0.4s;">
+                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-3 mx-auto">
+                        <i class="fas fa-shield-alt text-primary"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-center mb-2">15分钟自动备份</h3>
+                    <p class="text-gray-600 text-center text-[10px]">支持一键回档至任意自动备份点，数据更有保障</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 免费机制 -->
+    <section id="free" class="py-12 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-8 fade-in">
+                <h2 class="text-xl font-bold mb-3">公益免费使用机制</h2>
+                <p class="text-gray-600 text-sm">透明无套路，学生党也能长期使用</p>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 max-w-md mx-auto slide-up">
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div class="p-3 bg-primary/5 rounded">
+                        <div class="text-lg font-bold text-primary">1元</div>
+                        <div class="text-[10px] text-gray-500">微信认证</div>
+                    </div>
+                    <div class="p-3 bg-primary/5 rounded">
+                        <div class="text-lg font-bold text-primary">每日签到</div>
+                        <div class="text-[10px] text-gray-500">领50积分</div>
+                    </div>
+                    <div class="p-3 bg-primary/5 rounded">
+                        <div class="text-lg font-bold text-primary">连续7天</div>
+                        <div class="text-[10px] text-gray-500">解锁高阶配置</div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="https://simpfun.cn/auth?type=register&code=298401074" target="_blank" class="btn-primary">
+                        立即注册签到 <i class="fas fa-calendar-check ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户社区 -->
+    <section id="community" class="py-16 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12 fade-in">
+                <h2 class="text-2xl font-bold mb-4">Minecraft玩家社区</h2>
+                <p class="text-gray-600 text-sm">20万玩家选择，共建公益服务器生态</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <div class="slide-up">
+                    <div class="bg-white p-5 rounded-xl">
+                        <div class="flex items-start">
+                            <img src="https://api.simpfun.cn/static/images/recommend/3.png" alt="用户头像" class="w-10 h-10 rounded-full mr-3 mt-1">
+                            <div>
+                                <p class="text-gray-600 text-sm mb-3">"交了一块钱就给一个4H8G的服务器，我是真的享受到了'企业级'的待遇。真公益化，真良心化。他们的老板管理水平高的，对所有玩家一视同仁。有任何问题，他们也一直会提供支持。"</p>
+                                <div class="text-[10px]">
+                                    <div class="font-medium">天马行空</div>
+                                    <div class="text-gray-500">用户评价</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-up">
+                    <img src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/CREATE_BuildAlmostAnything.png" alt="Minecraft场景" class="rounded-lg shadow-sm w-full h-48 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="py-10 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-lg font-bold mb-3">立即开启您的MC公益服</h2>
+            <p class="text-white/80 text-sm mb-4 max-w-md mx-auto">1元认证+每日签到，免费获取高性能MC服务器</p>
+            <a href="https://simpfun.cn/auth?type=register&code=298401074" target="_blank" class="bg-white hover:bg-gray-100 text-primary text-sm font-bold py-2 px-4 rounded-lg inline-block shadow-sm hover:shadow-white/30 transition-all">
+                注册开服 <i class="fas fa-user-plus ml-1"></i>
+            </a>
+        </div>
+    </section>
+
+<!-- 页脚 -->
+<footer class="bg-dark text-white/80 py-4">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-3 md:mb-0">
+                <a href="#" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border-1 border-white/20">
+                        <img src="https://simpfun.cn/logo.png" alt="简幻欢logo" class="w-full h-full object-cover">
+                    </div>
+                    <span class="text-xs font-medium">简幻欢</span>
+                </a>
+            </div>
+            <div class="flex space-x-4 mb-3 md:mb-0">
+                <a href="https://www.yuque.com/simpfun/sfe/" target="_blank" class="text-white/80 hover:text-primary transition-colors flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-1">
+                        <path d="M4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6C2 4.89543 2.89543 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 8L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 12L14 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 16L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-[10px]">官方文档</span>
+                </a>
+                <a href="https://space.bilibili.com/1493209225" target="_blank" class="text-white/80 hover:text-primary transition-colors flex items-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-1">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 12L14 16L18 12L14 8L10 12Z" fill="currentColor"/>
+                    </svg>
+                    <span class="text-[10px]">B站空间</span>
+                </a>
+            </div>
+            <div class="text-[10px] text-white/60">
+                此网页为推荐页 | 简幻欢-Minecraft公益开服平台
+            </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-white/10 text-center text-[10px] text-white/50">
+            简幻欢 | Minecraft公益开服平台
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // 导航栏滚动效果
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md', 'bg-white');
+            } else {
+                nav.classList.remove('shadow-md', 'bg-white');
+            }
+        });
+        
+        // Logo旋转动画
+        const logo = document.getElementById('logo');
+        logo.addEventListener('click', () => {
+            logo.querySelector('div').classList.add('rotate-logo');
+            setTimeout(() => {
+                logo.querySelector('div').classList.remove('rotate-logo');
+            }, 1000);
+        });
+        
+        // 移动端菜单
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        
+        // 元素进入视口动画
+        document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
